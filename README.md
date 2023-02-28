@@ -1,26 +1,26 @@
 
- 1. Các thành phần của K8s
- - Master
-  ○ APIServer
-  ○ Controller-manager 
-  ○ Cloud-controller-manager
-  ○ Scheduler
-  ○ Etcd
- - Worker 
-  ○ Kubelet
-  ○ Kube-proxy
- 2. Mô hình triển khai
- - Stack Etcd
-  ○ Tất cả các thành phần của master bao gồm cả etcd nằm trên node master
-  ○ Các worker hoặc client kết nối tới apiServer thông qua Loadbalancer
+## 1. Các thành phần của K8s
+### Master
+   - APIServer
+   - Controller-manager 
+   - Cloud-controller-manager
+   - Scheduler
+   - Etcd
+### Worker 
+  - Kubelet
+  - Kube-proxy
+## 2. Mô hình triển khai
+### Stack Etcd
+  - Tất cả các thành phần của master bao gồm cả etcd nằm trên node master
+  -  Các worker hoặc client kết nối tới apiServer thông qua Loadbalancer
 
   ![](./images/stack-etcd.png)
- - External Etcd
-  ○ etcd nằm riêng với node master
+### External Etcd
+  - etcd nằm riêng với node master
 
 ![](./images/external-etcd.png)
 
- 2. Các bước triển khai Kubernetes Cluster với kubeadm
+## 3.  Các bước triển khai Kubernetes Cluster với kubeadm
  - Cài đặt container runtime
  - Cài đặt các công cụ  kubectl, kubeadm, kubelet
  - Cấu hình Cgroup drive
@@ -30,13 +30,13 @@
  - Thêm master node, woker node
  
 * Chuẩn bị
-Lb
+#### Lb
  - 10.0.0.10
-Master:
+#### Master:
  -  10.0.0.1
  -  10.0.0.2
  -  10.0.0.3
-Worker
+#### Worker
  - 10.0.0.4
  - 10.0.0.5
  - 10.0.0.6
