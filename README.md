@@ -49,7 +49,7 @@ apt install nginx -y
 cd /etc/nginx
 mkdir k8s-lb.d
 cd k8s-lb.d
-cat <<EOF | sudo tee /etc/nginx/k8s-lb.d/apiserver.con
+cat <<EOF | sudo tee /etc/nginx/k8s-lb.d/apiserver.conf
 stream {
     upstream kubernetes {
         server 10.0.0.100:6443 max_fails=3 fail_timeout=30s;
@@ -84,6 +84,8 @@ net.ipv4.ip_forward                 = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 EOF
 sudo sysctl --system
+
+
 sudo apt install containerd -y
 mkdir /etc/containerd
 containerd config default > /etc/containerd/config.toml
