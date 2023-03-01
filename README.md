@@ -49,26 +49,24 @@ apt install nginx -y
 cd /etc/nginx
 mkdir k8s-lb.d
 cd k8s-lb.d
-cat <<EOF sudo tee /etc/nginx/k8s-lb.d/apiserver.con
+cat <<EOF | sudo tee /etc/nginx/k8s-lb.d/apiserver.con
 stream {
-        upstream kubernetes {
-     server 10.0.0.1:6443 max_fails=3 fail_timeout=30s;
-     server 10.0.0.2:6443 max_fails=3 fail_timeout=30s;
-     server 10.0.0.3:6443 max_fails=3 fail_timeout=30s;
-  }
-  server {
-               listen 6443;
-               #listen 443;
-                proxy_pass kubernetes;
-             }
-  }
+    upstream kubernetes {
+        server 10.0.0.100:6443 max_fails=3 fail_timeout=30s;
+        server 10.0.0.101:6443 max_fails=3 fail_timeout=30s;
+        server 10.0.0.103:6443 max_fails=3 fail_timeout=30s;
+    }
+    server {
+            listen 6443;
+            proxy_pass kubernetes;
+         }
+}
 EOF
-```
 
-```sh
-vi /etc/nginx/nginx.conf
-include /etc/nginx/k8s-lb.d/*;
+# Include config to nginx
+echo "include /etc/nginx/k8s-lb.d/*;" >> /etc/nginx/nginx.conf
 nginx -s reload
+
 ```
 
 ## Install containerd
