@@ -146,6 +146,10 @@ kubeadm token list
 
 ```sh
 kubeadm token create
+
+or
+
+kubeadm token create --print-join-command
 ```
 
 ## Discovery token ca cert hash
