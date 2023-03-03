@@ -139,9 +139,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/a
 ```
 
 # Setting up management script
-``` vi ~/dashboard/dashboard.sh
 
-[dashboard.sh](./setup/dashboard/dashboard.sh)
+[dashboard.sh](https://github.com/luudinhmac/install-kubernetes/blob/master/setup/dashboard/dashboard.sh)
 
 Make script executable
 ```sh
