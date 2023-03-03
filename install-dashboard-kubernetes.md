@@ -13,6 +13,12 @@ type: LoadBalancer  #suported values: "ClusterIP", "ExternalName", "LoadBalancer
 
 ![](./images/dashboard-lb.PNG)
 
+### Get address and port to login
+
+```sh
+kubectl get services -n kubernetes-dashboard
+```
+![](./images/info-login.PNG)
 ## Create Admin-user
 
 ```sh
